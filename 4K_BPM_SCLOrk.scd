@@ -1,28 +1,37 @@
-( /*
-   _____  ____  __.     /\ ____________________  _____
-  /  |  ||    |/ _|    / / \______   \______   \/     \
- /   |  ||      <     / /   |    |  _/|     ___/  \ /  \
-/    ^   /    |  \   / /    |    |   \|    |  /    Y    \
-\____   ||____|__ \ / /     |______  /|____|  \____|__  /
-     |__|        \/ \/             \/                 \/
-  __________________ .____    ________         __
- /   _____/\_   ___ \|    |   \_____  \_______|  | __
- \_____  \ /    \  \/|    |    /   |   \_  __ \  |/ /
- /        \\     \___|    |___/    |    \  | \/    <
-/_______  / \______  /_______ \_______  /__|  |__|_ \
-        \/         \/        \/       \/           \/
-                                                             v150403
 
-"4K/BPM" - for SCLOrk
+/* *************************************************************************
+         _____  ____  __.     /\ ____________________  _____
+        /  |  ||    |/ _|    / / \______   \______   \/     \
+       /   |  ||      <     / /   |    |  _/|     ___/  \ /  \
+      /    ^   /    |  \   / /    |    |   \|    |  /    Y    \
+      \____   ||____|__ \ / /     |______  /|____|  \____|__  /
+           |__|        \/ \/             \/                 \/
+        __________________ .____    ________         __
+       /   _____/\_   ___ \|    |   \_____  \_______|  | __
+       \_____  \ /    \  \/|    |    /   |   \_  __ \  |/ /
+       /        \\     \___|    |___/    |    \  | \/    <
+      /_______  / \______  /_______ \_______  /__|  |__|_ \
+              \/         \/        \/       \/           \/
+                                                                      v150403
+
+"4K/BPM SCLOrk" for Santa Clara University Laptop Orchestra
            by Luka Prinčič / Nova deViator <nova@deviator.si>
+           thanks to Bruno Ruviaro
+
+           adapted from 4K/BPM Sonoretum patch, released and
+           installed at Sonoretum project / Kapelica Gallery, Ljubljana
+           thanks to Marko Košnik, Sandra Sajovic and Jurij Krpan
 
            released under GNU GPL. feel free to copy, reuse, remix,
-           provided that you share under same conditions: GNU GPL.    */
+           provided that you share under same conditions: GNU GPL.
+
+***************************************************************************** */
+
+(
 
 
 
-
-// HERE BE SOME FUNKY VARIABLES //
+// HERE BE SOME FUNKY VARIABLES ///////////////////////////////////////
 
 ~chanExpan = [1,1]; // multi channel expansion (just stereo here)
 ~bpm = 1; // bpm, for now constant, it could drift...
@@ -35,7 +44,7 @@
    DEFINE SYNTHS AND ADD TO SERVER
    *******************************                                                     */
 
-SynthDef(\kindaBass, { | out=0, gain=0.1 |
+SynthDef(\kindaBass, { | out=0, gain=0 |
 	out = SinOsc.ar( ((LFSaw.kr(-0.05,1) + 1) * 100 + 40 ),	LFTri.kr(40,0,1),
 		LFSaw.kr(1.5 * ~bpm) ) * 0.5 * ~chanExpan * gain;
 	OffsetOut.ar(0, out); }).add;
@@ -214,7 +223,7 @@ MIDIdef.cc(\midipulseVerb, 	{ | val | ~pulseVerb.set(\gain, val/127); }, 	18 ); 
 // effects and master out midi control
 MIDIdef.cc(\midifXcombWet, 	{ | val | ~fX.set(\combWet, val/177); }, 	60 ); // <- controller number
 
-MIDIdef.cc(\midifXlpfCutoff, 	{ | val |
+MIDIdef.cc(\midifXlpfCutoff, { | val |
 	var cutoff; cutoff = (exp(val/12)+50).asInt.min(20000);
 	//post("val:" + val); postln(" cutoff:" + cutoff);
 	~fX.set(\lpfCutoff, cutoff); }, 	61 ); // <- controller number
