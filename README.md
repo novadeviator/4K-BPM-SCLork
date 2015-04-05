@@ -5,3 +5,15 @@
 ## User's guide
 
 In constrast to the Sonoretum version, which was created as an autonomously-running algorhythmic composition, SCLOrk version needs laptop performers.
+
+### Draft setup:
+
+    laptop
+    audio interface
+    mono out 1 -> a speaker
+    3+4 out: headphones
+    midi interfaces:
+        - quneo
+        - wiimote
+
+the patch
