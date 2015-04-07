@@ -4,16 +4,24 @@
 
 ## User's guide
 
-In constrast to the Sonoretum version, which was created as an autonomously-running algorhythmic composition, SCLOrk version needs laptop performers.
+In constrast to the Sonoretum version, which was created as an autonomously-running algorhythmic composition, SCLOrk version needs laptop performers and appropriate setup.
 
-### Draft setup:
+### instruments setup:
 
     laptop
     audio interface
     mono out 1 -> a speaker
     3+4 out: headphones
-    midi interfaces:
-        - quneo
-        - wiimote
+    midi interfaces (quneo, wiimote, korg...)
+    network connection on local LAN
+    SuperCollider
+    PTP
 
-the patch
+### Performer's preparation
+ - there are generators and fx (comb filter, lp filter, reverb, master out), all assigned to midi
+ - listen to different generators
+ - choose a generator in consent with others. each should take one
+ - choose a
+
+
+### Composition in time
