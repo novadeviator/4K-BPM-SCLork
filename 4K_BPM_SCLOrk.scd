@@ -32,7 +32,7 @@
    MIDI CONTROLS
    *************
 
-GAINS:                                                                     midi        */
+GENERATORS' GAINS:                                                        midi        */
 MIDIdef.cc(\midilfTri,      { | val | ~lfTri.set(\gain, val/127); },       0 );
 MIDIdef.cc(\midikindaBass,  { | val | ~kindaBass.set(\gain, val/127); },   1 );
 MIDIdef.cc(\midiwierdBleep, { | val | ~wierdBleep.set(\gain, val/127); },  2 );
@@ -55,19 +55,23 @@ MIDIdef.cc(\midiwhite4,     { | val | ~white4.set(\gain, val/127); },     17 );
 MIDIdef.cc(\midisine56,     { | val | ~sine65.set(\gain, val/127); },     18 );
 MIDIdef.cc(\midilowCub2,    { | val | ~lowCub2.set(\gain, val/127); },    19 );
 
+MIDIdef.cc(\midiwhite5,     { | val | ~white5.set(\gain, val/127); },     20 );
+MIDIdef.cc(\midibrown1,     { | val | ~brown1.set(\gain, val/127); },     21 );
 
+// ------------------------------------------------------------------------------- //
 
 // effects and master out midi control
-MIDIdef.cc(\midifXcombWet, 	{ | val | ~fX.set(\combWet, val/200); }, 		60 ); // comb filter WET
+MIDIdef.cc(\midifXcombWet, 	{ | val | ~fX.set(\combWet, val/300); },      60 ); // comb filter WET
 
 MIDIdef.cc(\midifXlpfCutoff, { | val |
 	var cutoff; cutoff = (exp(val/12)+50).asInt.min(20000);
-	~fX.set(\lpfCutoff, cutoff); }, 										61 ); // LPF cutoff freq
+	~fX.set(\lpfCutoff, cutoff); },                                       61 ); // LPF cutoff freq
 
-MIDIdef.cc(\midifXreverbWet, 	{ | val | ~fX.set(\reverbWet, val/300); }, 	62 ); // Reverb WET
-MIDIdef.cc(\midifXgain, 	{ | val | ~fX.set(\gain, val/127); }, 			63 ); // MASTER OUT
+MIDIdef.cc(\midifXreverbWet, { | val | ~fX.set(\reverbWet, val/300); },   62 ); // Reverb WET
 
+MIDIdef.cc(\midifXgain, { | val | ~fX.set(\gain, val/127); },             63 ); // MASTER OUT
 
+//s.makeGui;
 
 /* *************************************************************************************
    SCHEDULE SYNTHS USING EVENTS
@@ -97,6 +101,8 @@ t.schedAbs(0, {
 	~white3	    = (instrument: \white3).play;
 	~white4	    = (instrument: \white4).play;
 	~lfTri      = (instrument: \lfTri).play;
+	~white5	    = (instrument: \white5).play;
+	~brown1	    = (instrument: \brown1).play;
 	postln(v);
 });
 
@@ -227,6 +233,17 @@ SynthDef(\lfTri, { | out=0, gain=0 |
 		* ~chanExpan * gain;
 	OffsetOut.ar(0, out); }).add;
 
+SynthDef(\white5, { | out=0, gain=0 |
+	out = RHPF.ar(WhiteNoise.ar( LFPulse.kr( (1/8) * ~bpm,0.5,0.1,1) ),4000)*0.05
+			* ~chanExpan * gain;
+	OffsetOut.ar(0, out); }).add;
+
+SynthDef(\brown1, { | out=0, gain=0 |
+	out = RLPF.ar(BrownNoise.ar( LFPulse.kr( (1/9) * ~bpm,0.5,0.05,1) ),8000)*0.1
+			* ~chanExpan * gain;
+	OffsetOut.ar(0, out); }).add;
+
+
 // effects!
 SynthDef(\fX, { | in=0, out=0, reverbWet=0, combWet=0, lpfCutoff=20000, gain=0.4 |
 	var input, output;
@@ -246,7 +263,9 @@ SynthDef(\fX, { | in=0, out=0, reverbWet=0, combWet=0, lpfCutoff=20000, gain=0.4
 	output = Limiter.ar((output*0.9), 0.95, 0.01);	 // limiter
 	output = output + FreeVerb.ar(output*reverbWet, 1, rrand(0.5,1), 0.1); // reverb
 	output = output * gain; // gain control
+	output = [output,output,output,output]; // send it to 4 channels
 	ReplaceOut.ar(out, output); // replace the audio on the bus!
+	//Out.ar(2, out);
 
 }).add;
 
