@@ -2,7 +2,8 @@
 
 "4K/BPM SCLOrk" is an electronic composition for any amount of laptop performers - but preferably 10 or more. It is written in SuperCollider and developed for Santa Clara University's laptop orchestra, thanks to Bruno Ruviaro. The composition is based on an 8-channel sound installation "4K/BPM Sonoretum" created for "Sonoretum" project at KAPELICA gallery in Ljubljana in 2014, thanks to Marko Košnik, Sandra Sajovic and Jurij Krpan.
 
-[![SCLOrk](https://farm3.staticflickr.com/2928/14207063349_d4ae1dd03e_z_d.jpg "SCLOrk")](https://www.flickr.com/photos/scucpa/sets/72157645156322753/)
+[![SCLOrk](https://farm3.staticflickr.com/2928/14207063349_dd25298321_k_d.jpg "SCLOrk")](https://www.flickr.com/photos/scucpa/sets/72157645156322753/)
+
 (photo from SCU flickr page)
 
 ## User's guide
