@@ -36,6 +36,8 @@ Once this is done it is recommended that all but assigned three generators (and 
 
 ### Creating a score for each perfomer
 
+![score template](https://raw.githubusercontent.com/novadeviator/4K-BPM-SCLork/master/score_template.png "Score Template")
+
 Print out a score template. There are PDF, PNG and SVG (Inkscape) versions avaible. It is also possible to edit an image/svg on the screen and work with that (that's more ecological, but perhaps too twiddly for some). The score has to be written by each performer for herself.
 
 The piece is 8 minutes long. For each generator there is a timeline to be filled out with an envelope. Draw an envelope using straight lines and the following rules: for each four minutes of the piece there should be at least one (1) and maximum four (4) peaks. Starting at bottom of the timeline each "attack" *can* be followed by a "sustain" and *must* be followed by a "release". Sustain/peak must be over 50% and a release must end below 50% before starting a new "attack" or sustaining there.
@@ -43,6 +45,8 @@ The piece is 8 minutes long. For each generator there is a timeline to be filled
 Preparing the score for three effects follows a different methodology: "self-instruction". Control of the effects is less structured and is left to be in more improvisational vein. However a performer must find an instruction which she will follow during the performance. This can take a very technical and simple form ("Keep it off", "On in 2nd and 6th minute", "All the time at low level") or more suggestive and more open to intuitive interpretation ("Rarely close it for short time", "Fast waves many times", "Listen and respond to others"). The instruction must represent an action to performer herself, it must not be just an empty sentence. A word of caution about the low-pass filter: if used too broadly it can easily function as a volume control - it will cut out all the sound. It is quite dependent on the sound it affects. The performer must make sure to use it in order to manipulate sound colour.
 
 Performers should test things out, practice on their own (headphones can be handy), rehearse together and adjust/rewrite their scores.
+
+![score example](https://raw.githubusercontent.com/novadeviator/4K-BPM-SCLork/master/score_example.jpg "Score Example")
 
 
 ### Sync
