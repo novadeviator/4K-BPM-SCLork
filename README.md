@@ -4,7 +4,8 @@
 
 ## User's guide
 
-In constrast to the Sonoretum version, which was created as an autonomously-running algorhythmic composition, SCLOrk version needs laptop performers and appropriate setup.
+In contrast to the Sonoretum version, which was created as an autonomously-running algorhythmic composition, SCLOrk version needs laptop performers and appropriate setup.
+
 
 ### Instruments setup:
 
