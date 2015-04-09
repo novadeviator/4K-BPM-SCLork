@@ -53,19 +53,23 @@ Check if master machine is running ntp daemon:
     ps waux | grep ntpd
 
 
+
 If master is running ntp daemon (regardless if connection to internet is present), run PTPd in master mode:
 
     sudo ptpd -C -G
 
 
-If master has not ntp daemon, run
+
+If master has no ntp daemon running, run
 
     sudo ptpd -C -W
+
 
 
 All other computers should run PTPd in slave mode:
 
     sudo ptpd -C -g
+
 
 
 Now all clocks of all laptops should be in tight sync and the SC patch can be evaluated. It is recommended that it is evaluated just before the performance.
