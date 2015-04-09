@@ -49,10 +49,10 @@ Performers should test things out, practice on their own (headphones can be hand
 The sync between laptops is achieved using Precision Time Protocol. One of the machines must be assigned as a master to which all others will sync. Before the SC patch is evaluated, prepare clock sync in the following way.
 
 Check if master machine is running ntp daemon:
- ps waux | grep ntpd
+    ps waux | grep ntpd
 
 If master is running ntp daemon (regardless if connection to internet is present), run PTPd in master mode:
- sudo ptpd -C -G
+    sudo ptpd -C -G
 
 If master has not ntp daemon, run
  sudo ptpd -C -W
