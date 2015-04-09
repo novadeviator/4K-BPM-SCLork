@@ -72,9 +72,13 @@ All other computers should run PTPd in slave mode:
 
 
 
-Now all clocks of all laptops should be in tight sync and the SC patch can be evaluated. It is recommended that it is evaluated just before the performance.
+Now all clocks of all laptops should be in tight sync and the SC patch can be evaluated. It is recommended that it is evaluated just before the performance. The idea behind is that this:
 
-To test the sync, all laptops should play "~white2", which is a short click at frequency 1Hz.
+    v = Main.elapsedTime.ceil;
+    t = TempoClock(1, 0, v);
+    t.schedAbs(0, .....
+
+will start all oscilations exaclty at the start of the full second. Since all frequencies of pulses are derivatives of 1Hz, this should  keep everything in sync. To test the sync, all laptops should play "~white2", which is a short click at frequency 1Hz.
 
 
 
