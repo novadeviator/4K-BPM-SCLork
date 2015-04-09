@@ -31,7 +31,8 @@
 /* *************************************************************************************
    MIDI CONTROLS
    *************
-                                                                          midi        */
+
+GAINS:                                                                     midi        */
 MIDIdef.cc(\midilfTri,      { | val | ~lfTri.set(\gain, val/127); },       0 );
 MIDIdef.cc(\midikindaBass,  { | val | ~kindaBass.set(\gain, val/127); },   1 );
 MIDIdef.cc(\midiwierdBleep, { | val | ~wierdBleep.set(\gain, val/127); },  2 );
@@ -72,7 +73,6 @@ MIDIdef.cc(\midifXgain, 	{ | val | ~fX.set(\gain, val/127); }, 			63 ); // MASTE
    SCHEDULE SYNTHS USING EVENTS
    ****************************                                                        */
 
-// schedule this!
 v = Main.elapsedTime.ceil;
 t = TempoClock(1, 0, v);
 t.schedAbs(0, {
@@ -97,9 +97,8 @@ t.schedAbs(0, {
 	~white3	    = (instrument: \white3).play;
 	~white4	    = (instrument: \white4).play;
 	~lfTri      = (instrument: \lfTri).play;
+	postln(v);
 });
-
-
 
 
 
@@ -107,7 +106,7 @@ t.schedAbs(0, {
 
 // SCALES! //
 
-~aSc = Scale.saba; // define scale type
+~aSc = Scale.minorPentatonic; // define scale type
 ~freqTrig = { Impulse.kr(rrand(0.01,0.05)); }; // how fast the note changes
 ~freqOff = {rrand(0.98, 1.02);}; // detune a bit
 
@@ -118,7 +117,6 @@ t.schedAbs(0, {
 ~freqVar6 = { (Demand.kr(~freqTrig, 0, (Dxrand(~aSc.semitones, inf))) + (12 * 6) ).midicps * ~freqOff };
 ~freqVar7 = { (Demand.kr(~freqTrig, 0, (Dxrand(~aSc.semitones, inf))) + (12 * 7) ).midicps * ~freqOff };
 ~freqVar8 = { (Demand.kr(~freqTrig, 0, (Dxrand(~aSc.semitones, inf))) + (12 * 8) ).midicps * ~freqOff };
-
 
 ~chanExpan = [1,1]; // multi channel expansion (just stereo here)
 
@@ -135,7 +133,7 @@ SynthDef(\kindaBass, { | out=0, gain=0 |
 	OffsetOut.ar(0, out); }).add;
 
 SynthDef(\wierdBleep, { | out=0, gain=0 |
-	out = LFPulse.ar(~freqVar3, 0, 0.5, LFPulse.kr((1/2) * ~bpm, 0.5, 0.03, 0.3))
+	out = LFPulse.ar(~freqVar3, 0, 0.5, LFPulse.kr((1/2) * ~bpm, 0.5, 0.03, 0.05))
 		* ~chanExpan * gain;
 	OffsetOut.ar(0, out); }).add;
 
