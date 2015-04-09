@@ -38,7 +38,7 @@ Once this is done it is recommended that all but assigned three generators (and 
 
 ![score template](https://raw.githubusercontent.com/novadeviator/4K-BPM-SCLork/master/score_template.png "Score Template")
 
-Print out a score template. There are [PDF](../raw/master/score_template.pdf), [PNG]() and [SVG]() (Inkscape) versions avaible. It is also possible to edit an image/svg on the screen and work with that (that's more ecological, but perhaps too twiddly for some). The score has to be written by each performer for herself.
+Print out a score template. There are [PDF](https://github.com/novadeviator/4K-BPM-SCLork/raw/master/score_template.pdf), [PNG](https://github.com/novadeviator/4K-BPM-SCLork/raw/master/score_template.png) and [SVG](https://github.com/novadeviator/4K-BPM-SCLork/raw/master/score_template.svg) (Inkscape) versions avaible. It is also possible to edit an image/svg on the screen and work with that (that's more ecological, but perhaps too twiddly for some). The score has to be written by each performer for herself.
 
 The piece is 8 minutes long. For each generator there is a timeline to be filled out with an envelope. Draw an envelope using straight lines and the following rules: for each four minutes of the piece there should be at least one (1) and maximum four (4) peaks. Starting at bottom of the timeline each "attack" *can* be followed by a "sustain" and *must* be followed by a "release". Sustain/peak must be over 50% and a release must end below 50% before starting a new "attack" or sustaining there.
 
